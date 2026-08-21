@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FightWorld - Lutas Internacionais</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #fff;
+    }
+
+    header {
+      background: #111;
+      border-bottom: 2px solid #e50914;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e50914;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e50914;
+    }
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 60px 7%;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.95), rgba(0,0,0,.45)),
+        url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #e50914;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e50914;
+      color: white;
+      padding: 14px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: .3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #b20710;
+      transform: scale(1.04);
+    }
+
+    section {
+      padding: 60px 7%;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 35px;
+      border-left: 5px solid #e50914;
+      padding-left: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #151515;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: .3s;
+      border: 1px solid #242424;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #e50914;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e50914;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .ranking {
+      width: 100%;
+      border-collapse: collapse;
+      background: #151515;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .ranking th,
+    .ranking td {
+      padding: 18px;
+      text-align: left;
+      border-bottom: 1px solid #292929;
+    }
+
+    .ranking th {
+      background: #e50914;
+    }
+
+    .ranking tr:hover {
+      background: #202020;
+    }
+
+    .number {
+      color: #e50914;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .event {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #171717, #101010);
+      padding: 25px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #e50914;
+    }
+
+    .event h3 {
+      margin-bottom: 8px;
+    }
+
+    .event p {
+      color: #aaa;
+    }
+
+    .newsletter {
+      text-align: center;
+      background: #e50914;
+      padding: 60px 20px;
+    }
+
+    .newsletter h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      margin-bottom: 25px;
+    }
+
+    .newsletter input {
+      padding: 15px;
+      width: min(350px, 90%);
+      border: none;
+      border-radius: 5px;
+      margin-right: 8px;
+      outline: none;
+    }
+
+    .newsletter .btn {
+      background: #111;
+    }
+
+    footer {
+      background: #080808;
+      padding: 30px 7%;
+      text-align: center;
+      color: #777;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .event {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .newsletter input {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">FIGHT<span>WORLD</span></div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#noticias">Notícias</a>
+      <a href="#lutadores">Lutadores</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#ranking">Ranking</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>O mundo das <span>lutas</span></h1>
+
+        <p>
+          Acompanhe as principais notícias, eventos, rankings e grandes
+          lutadores dos esportes de combate ao redor do mundo.
+        </p>
+
+        <a href="#eventos" class="btn">Ver próximos eventos</a>
+      </div>
+    </section>
+
+    <section id="noticias">
+      <h2 class="section-title">Últimas notícias</h2>
+
+      <div class="cards">
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <span class="tag">MMA</span>
+            <h3>Grande duelo internacional é anunciado</h3>
+            <p>
+              Dois dos principais nomes do cenário mundial se preparam
+              para um confronto aguardado pelos fãs.
+            </p>
+            <a href="#" class="btn">Ler mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <span class="tag">BOXE</span>
+            <h3>Campeonato mundial se aproxima</h3>
+            <p>
+              Atletas de diferentes países entram na reta final de
+              preparação para o grande campeonato.
+            </p>
+            <a href="#" class="btn">Ler mais</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <span class="tag">KICKBOXING</span>
+            <h3>Nova geração ganha destaque</h3>
+            <p>
+              Jovens talentos começam a conquistar espaço no cenário
+              internacional dos esportes de combate.
+            </p>
+            <a href="#" class="btn">Ler mais</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="lutadores">
+      <h2 class="section-title">Lutadores em destaque</h2>
+
+      <div class="cards">
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <h3>Alex "The Beast"</h3>
+            <p>🇧🇷 Brasil</p>
+            <p>Categoria: Peso Meio-Médio</p>
+            <strong>Vitórias: 24 | Derrotas: 3</strong>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <h3>Michael Storm</h3>
+            <p>🇺🇸 Estados Unidos</p>
+            <p>Categoria: Peso Médio</p>
+            <strong>Vitórias: 21 | Derrotas: 2</strong>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?auto=format&fit=crop&w=800&q=80">
+
+          <div class="card-content">
+            <h3>Kenji Tanaka</h3>
+            <p>🇯🇵 Japão</p>
+            <p>Categoria: Peso Leve</p>
+            <strong>Vitórias: 19 | Derrotas: 1</strong>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="eventos">
+      <h2 class="section-title">Próximos eventos</h2>
+
+      <div class="event">
+        <div>
+          <h3>WORLD FIGHT NIGHT</h3>
+          <p>São Paulo, Brasil • 15 Setembro</p>
+        </div>
+        <button class="btn" onclick="verEvento('World Fight Night')">
+          Detalhes
+        </button>
+      </div>
+
+      <div class="event">
+        <div>
+          <h3>GLOBAL MMA CHAMPIONSHIP</h3>
+          <p>Las Vegas, EUA • 28 Setembro</p>
+        </div>
+        <button class="btn" onclick="verEvento('Global MMA Championship')">
+          Detalhes
+        </button>
+      </div>
+
+      <div class="event">
+        <div>
+          <h3>ASIA COMBAT FESTIVAL</h3>
+          <p>Tóquio, Japão • 10 Outubro</p>
+        </div>
+        <button class="btn" onclick="verEvento('Asia Combat Festival')">
+          Detalhes
+        </button>
+      </div>
+    </section>
+
+    <section id="ranking">
+      <h2 class="section-title">Ranking internacional</h2>
+
+      <table class="ranking">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Lutador</th>
+            <th>País</th>
+            <th>Vitórias</th>
+            <th>Pontos</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="number">1</td>
+            <td>Alex "The Beast"</td>
+            <td>🇧🇷 Brasil</td>
+            <td>24</td>
+            <td>985</td>
+          </tr>
+
+          <tr>
+            <td class="number">2</td>
+            <td>Michael Storm</td>
+            <td>🇺🇸 EUA</td>
+            <td>21</td>
+            <td>940</td>
+          </tr>
+
+          <tr>
+            <td class="number">3</td>
+            <td>Kenji Tanaka</td>
+            <td>🇯🇵 Japão</td>
+            <td>19</td>
+            <td>910</td>
+          </tr>
+
+          <tr>
+            <td class="number">4</td>
+            <td>Lucas Silva</td>
+            <td>🇧🇷 Brasil</td>
+            <td>18</td>
+            <td>875</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="newsletter">
+      <h2>Receba as novidades</h2>
+      <p>Cadastre seu e-mail para receber notícias do mundo das lutas.</p>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+      >
+
+      <button class="btn" onclick="inscrever()">
+        Inscrever
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 FightWorld — Portal de Lutas Internacionais</p>
+    <p>Conteúdo demonstrativo para fins educacionais.</p>
+  </footer>
+
+  <script>
+    function verEvento(nome) {
+      alert(
+        "Você selecionou o evento: " + nome +
+        "\\n\\nMais informações serão disponibilizadas em breve."
+      );
+    }
+
+    function inscrever() {
+      const email = document.getElementById("email").value;
+
+      if (email === "") {
+        alert("Digite seu e-mail.");
+        return;
+      }
+
+      if (!email.includes("@")) {
+        alert("Digite um e-mail válido.");
+        return;
+      }
+
+      alert("Inscrição realizada com sucesso!");
+      document.getElementById("email").value = "";
+    }
+  </script>
+
+</body>
+</html>

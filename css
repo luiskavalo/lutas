@@ -1,0 +1,571 @@
+/* ========================================
+   FIGHTWORLD - ESTILO PRINCIPAL
+   ======================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+header {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.97);
+    border-bottom: 2px solid #e50914;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 7%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #e50914;
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+
+.hero {
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 7%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.7) 45%,
+            rgba(0, 0, 0, 0.2) 100%
+        ),
+        url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.hero p {
+    color: #d0d0d0;
+    font-size: 18px;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+
+.btn {
+    display: inline-block;
+
+    background: #e50914;
+    color: #ffffff;
+
+    padding: 13px 25px;
+
+    border: none;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.btn:hover {
+    background: #ff1a25;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(229, 9, 20, 0.3);
+}
+
+/* ========================================
+   SEÇÕES
+   ======================================== */
+
+section {
+    padding: 80px 7%;
+}
+
+.section-title {
+    font-size: 34px;
+    margin-bottom: 40px;
+
+    border-left: 5px solid #e50914;
+    padding-left: 15px;
+
+    text-transform: uppercase;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 25px;
+}
+
+.card {
+    background: #141414;
+
+    border: 1px solid #252525;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: #e50914;
+
+    box-shadow:
+        0 10px 35px rgba(229, 9, 20, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin: 12px 0;
+}
+
+.card p {
+    color: #aaaaaa;
+    margin-bottom: 12px;
+}
+
+.card strong {
+    display: block;
+    margin-bottom: 18px;
+}
+
+/* ========================================
+   TAGS
+   ======================================== */
+
+.tag {
+    display: inline-block;
+
+    background: #e50914;
+    color: #ffffff;
+
+    padding: 5px 10px;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   EVENTOS
+   ======================================== */
+
+.event {
+    background:
+        linear-gradient(
+            90deg,
+            #181818,
+            #101010
+        );
+
+    border-left: 4px solid #e50914;
+
+    border-radius: 7px;
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.event:hover {
+    background: #1d1d1d;
+    transform: translateX(5px);
+}
+
+.event h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.event p {
+    color: #999999;
+}
+
+/* ========================================
+   RANKING
+   ======================================== */
+
+.ranking {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: #141414;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.ranking th {
+    background: #e50914;
+    color: #ffffff;
+
+    padding: 18px;
+
+    text-align: left;
+}
+
+.ranking td {
+    padding: 18px;
+
+    border-bottom: 1px solid #292929;
+}
+
+.ranking tbody tr {
+    transition: 0.3s;
+}
+
+.ranking tbody tr:hover {
+    background: #202020;
+}
+
+.number {
+    color: #e50914;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+
+/* ========================================
+   NEWSLETTER
+   ======================================== */
+
+.newsletter {
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #8d050b
+        );
+
+    padding: 80px 20px;
+}
+
+.newsletter h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.newsletter p {
+    margin-bottom: 25px;
+    color: #f2f2f2;
+}
+
+.newsletter input {
+    width: min(350px, 90%);
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 5px;
+
+    outline: none;
+
+    margin-right: 8px;
+
+    font-size: 15px;
+}
+
+.newsletter input:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.25);
+}
+
+.newsletter .btn {
+    background: #080808;
+}
+
+.newsletter .btn:hover {
+    background: #222222;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background: #050505;
+
+    padding: 35px 7%;
+
+    text-align: center;
+
+    color: #777777;
+
+    border-top: 1px solid #202020;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* ========================================
+   BARRA DE ROLAGEM
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff1a25;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .hero {
+        padding: 70px 5%;
+    }
+}
+
+/* ========================================
+   RESPONSIVIDADE - CELULAR
+   ======================================== */
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+
+        padding: 18px 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 500px;
+
+        padding: 60px 25px;
+
+        background:
+            linear-gradient(
+                rgba(0, 0, 0, 0.8),
+                rgba(0, 0, 0, 0.9)
+            ),
+            url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1000&q=80");
+
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 55px 20px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .event {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .event .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .ranking {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .newsletter input {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+
+    .newsletter .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   ANIMAÇÃO
+   ======================================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: aparecer 1s ease;
+}
+
+.card {
+    animation: aparecer 0.8s ease;
+}
